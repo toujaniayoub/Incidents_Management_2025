@@ -1,0 +1,28 @@
+b, strong {
+    font-weight: 600;
+    color: #0b6f9d;
+}
+
+.img-fluid {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.auth-header {
+    margin-top: -16px;
+}
+
+
+input#customCheckc1 {
+    border-color: #0b6f9d;
+    background-color: #0b6f9d;
+}
+
+button.btn.btn-secondary{
+    border-color: #0b6f9d;
+    background-color: #0b6f9d;
+}
+
+.form-control {
+    border: 1px solid #0b6f9d;
+}

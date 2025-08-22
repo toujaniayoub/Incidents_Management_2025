@@ -1,0 +1,153 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5>Incident Hotspots & Trends Analysis</h5>
+        <div>
+            <div class="btn-group me-3" role="group" aria-label="Analysis Mode">
+                <button type="button" class="btn"
+                    [ngClass]="{'btn-primary': currentMode === 'realtime', 'btn-outline-primary': currentMode !== 'realtime'}"
+                    (click)="startRealtimeHotspotPolling()">
+                    Real-time Hotspots
+                </button>
+                <button type="button" class="btn"
+                    [ngClass]="{'btn-primary': currentMode === 'yearly', 'btn-outline-primary': currentMode !== 'yearly'}"
+                    (click)="currentMode = 'yearly'; yearlyComparisonData = null">
+                    Yearly Comparison
+                </button>
+            </div>
+
+            <button class="btn btn-sm btn-primary" (click)="currentMode === 'realtime' ? startRealtimeHotspotPolling() : fetchYearlyComparison()"
+                [disabled]="isLoading || (currentMode === 'yearly' && (!selectedYear1 || !selectedYear2))">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span *ngIf="!isLoading">
+                    <i class="ti ti-refresh"></i>
+                    {{ currentMode === 'realtime' ? 'Refresh Real-time' : 'Compare Years' }}
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div *ngIf="isLoading" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Loading data...</p>
+        </div>
+
+        <div *ngIf="currentMode === 'realtime' && !isLoading">
+            <div *ngIf="hotspotError" class="alert alert-danger" role="alert">
+                <strong>Error:</strong> {{ hotspotError }}
+            </div>
+
+            <div *ngIf="!hotspotError && (!hotspots || hotspots.length === 0)">
+                <div class="alert alert-info" role="alert">
+                    No significant incident hotspots detected in the recent period. Good job!
+                </div>
+            </div>
+
+            <div *ngIf="!hotspotError && hotspots && hotspots.length > 0">
+                <p class="text-muted">Currently detected areas with unusually high incident activity (last 24h vs last 30 days):</p>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Problem Type</th>
+                                <th>Service</th>
+                                <th>Site</th>
+                                <th>Priority</th>
+                                <th class="text-end">Current Count</th>
+                                <th class="text-end">Historical Avg</th>
+                                <th class="text-end">Deviation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let hotspot of hotspots">
+                                <td>{{ hotspot.problem_type }}</td>
+                                <td>{{ hotspot.service_name }}</td>
+                                <td>{{ hotspot.site_name }}</td>
+                                <td>{{ hotspot.priority_name }}</td>
+                                <td class="text-end">{{ hotspot.current_incident_count }}</td>
+                                <td class="text-end">{{ hotspot.historical_avg_count.toFixed(1) }}</td>
+                                <td class="text-end">
+                                    <span class="badge rounded-pill {{ getDeviationBadgeClass(hotspot.deviation_percentage) }}">
+                                        {{ formatPercentage(hotspot.deviation_percentage) }}
+                                    </span>
+                                    <br>
+                                    <small class="text-muted">{{ hotspot.deviation_description }}</small>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="currentMode === 'yearly' && !isLoading">
+            <div class="row mb-3 align-items-end">
+                <div class="col-md-3">
+                    <label for="year1Select" class="form-label">Compare Year:</label>
+                    <select id="year1Select" class="form-select" [(ngModel)]="selectedYear1">
+                        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="year2Select" class="form-label">With Year:</label>
+                    <select id="year2Select" class="form-select" [(ngModel)]="selectedYear2">
+                        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button class="btn btn-success" (click)="fetchYearlyComparison()"
+                        [disabled]="isLoading || !selectedYear1 || !selectedYear2 || selectedYear1 === selectedYear2">
+                        <i class="ti ti-chart-bar"></i> Analyze Yearly Trends
+                    </button>
+                </div>
+            </div>
+
+            <div *ngIf="yearlyComparisonError" class="alert alert-danger" role="alert">
+                <strong>Error:</strong> {{ yearlyComparisonError }}
+            </div>
+
+            <div *ngIf="!yearlyComparisonError && (!yearlyComparisonData || yearlyComparisonData.length === 0)">
+                <div class="alert alert-info" role="alert">
+                    No significant year-over-year changes detected for the selected years.
+                </div>
+            </div>
+
+            <div *ngIf="!yearlyComparisonError && yearlyComparisonData && yearlyComparisonData.length > 0">
+                <p class="text-muted">Significant changes in incident counts between selected years:</p>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Problem Type</th>
+                                <th>Service</th>
+                                <th>Site</th>
+                                <th>Priority</th>
+                                <th class="text-end">Incidents {{ selectedYear1 }}</th>
+                                <th class="text-end">Incidents {{ selectedYear2 }}</th>
+                                <th class="text-end">Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of yearlyComparisonData">
+                                <td>{{ item.problem_type }}</td>
+                                <td>{{ item.service_name }}</td>
+                                <td>{{ item.site_name }}</td>
+                                <td>{{ item.priority_name }}</td>
+                                <td class="text-end">{{ formatCount(item.count_year1) }}</td>
+                                <td class="text-end">{{ formatCount(item.count_year2) }}</td>
+                                <td class="text-end">
+                                    <span class="badge rounded-pill {{ getChangeBadgeClass(item.percentage_change) }}">
+                                        {{ formatPercentage(item.percentage_change) }}
+                                    </span>
+                                    <br>
+                                    <small class="text-muted">{{ item.change_description }}</small>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

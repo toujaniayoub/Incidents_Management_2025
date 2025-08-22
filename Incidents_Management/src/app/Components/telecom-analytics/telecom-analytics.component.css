@@ -1,0 +1,158 @@
+header.pc-header {
+    display: flex
+;
+    padding: 0 20px;
+    flex-grow: 1;
+}
+@media (min-width: 768px) {
+    .col-md-12 {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+img.logo {
+    width: 104%;
+    margin-top: 4px;
+}
+
+element.style {
+    padding: 25px 0px;
+}
+
+[data-pc-preset=preset-1] .pc-header .pc-head-link.head-link-secondary > i {
+    color: #0b6f9d;
+}
+
+.pc-sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+
+[data-pc-preset=preset-1] .btn-light-secondary {
+    color: #0b6f9d;
+}
+
+[data-pc-preset=preset-1] .pc-header .pc-head-link.head-link-primary {
+    color: #0b6f9d;
+}
+
+.dropdown-header h5{
+    color: #0b6f9d;
+}
+
+.text-center.py-2 a {
+    color: #0b6f9d;  
+}
+
+
+.dropdown-header a.link-primary {
+    color: #0b6f9d;  
+}
+
+.pc-link:hover .pc-mtext {
+    color: #0b6f9d !important; /* Couleur rouge pour le texte */
+}
+  
+.pc-link:hover .pc-micon i {
+    color: #0b6f9d !important; /* Couleur rouge pour l'icône */
+}
+
+.dropdown-item:hover span {
+    color: #0b6f9d;
+}
+  .dropdown-item:hover i {
+    color: #0b6f9d;
+}
+    
+i.ti.ti-adjustments-horizontal {
+    color: #0b6f9d;
+}
+
+button.btn.btn-light-secondary.btn-search {
+    background: unset;
+}
+
+.outspacePane {
+    display: none !important;
+}
+
+
+.displayAreaViewport,
+.displayAreaContainer,
+.canvasFlexBox,
+.exploreCanvas,
+.explorationContainer {
+  background: transparent !important;
+}
+iframe {
+    background: transparent !important;
+    border: none;
+    display: block;
+  }
+
+
+  .pc-content {
+    background: white;
+}
+
+.header-wrapper {
+    background: #0b6f9d;
+}
+header.pc-header {
+    background: #0b6f9d;
+}
+.simplebar-content-wrapper {
+    background: #0b6f9d;
+}
+
+.m-header {
+    background: #0b6f9d;
+}
+
+
+
+a#sidebar-hide {
+    background: unset;
+}
+
+.simplebar-content-wrapper {
+    background: #dbcece;
+}
+
+[data-pc-preset=preset-1] .pc-header .pc-head-link.head-link-secondary > i {
+    color: white;
+}
+
+[data-pc-preset=preset-1] .pc-header .pc-head-link.head-link-secondary > i {
+    color:  #0b6f9d !important;
+}
+
+[data-pc-preset=preset-1] .pc-header .pc-head-link.head-link-secondary {
+    background: white;
+}
+
+[data-pc-preset=preset-1] .pc-header .pc-head-link.head-link-primary {
+    background: white !important;
+}
+
+i.ti.ti-menu-2 {
+    color: white;
+}
+
+svg.feather.feather-search.icon-search {
+    color:#0b6f9d;
+}
+
+[data-pc-preset=preset-1] .btn-light-secondary {
+    border-color: #0b6f9d;
+}
+
+.form-control {
+    border: 1px solid #0b6f9d;
+}
+
+

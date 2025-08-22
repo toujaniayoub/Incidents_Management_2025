@@ -1,0 +1,68 @@
+.img-fluid {
+    max-width: 70%;
+    max-height: 70%;
+}
+
+a.nav-link.text-dark {
+    font-size: 24px;
+}
+
+
+.text-primary {
+    color: #0b6f9d !important; 
+}
+  
+.btn .btn-secondary .me-2 {
+    background-color: #b2b2b2 !important; 
+    border-color: #323232 !important; 
+}
+
+h1.mt-sm-3.mb-sm-4.f-w-600.wow.fadeInUp {
+    font-size: 50px;
+}
+
+
+header#home {
+    margin: -60px;
+}
+html, body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+    
+a.btn
+ {
+    background: #0b6f9d;
+    color: white ;
+}
+
+.navbar.default {
+  
+  border-radius: 15px;
+  margin-top: 27px;
+  margin-left: 24px;
+  margin-right: 24px; /* ✅ marge droite ajoutée */
+  margin-bottom: 12px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px #0b6f9d;
+  width: calc(100% - 48px); /* ✅ corrige le débordement */
+  box-sizing: border-box;
+  background: #0b6f9d;
+ 
+}
+
+.nav-link.active {
+  color: white !important;
+}
+
+
+.no-scroll[_ngcontent-ng-c1135937362] {
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(45deg, rgb(41, 40, 40), transparent);
+}

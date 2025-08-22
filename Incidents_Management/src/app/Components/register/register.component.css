@@ -1,0 +1,25 @@
+b, strong {
+    font-weight: 600;
+    color: #b10404;
+}
+
+.img-fluid {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.auth-header {
+    margin-top: -16px;
+}
+
+
+
+input#customCheckc1 {
+    border-color: #b10404;
+    background-color: #b10404;
+}
+
+button.btn.btn-secondary.p-2 {
+    border-color: #b10404;
+    background-color: #b10404;
+}
