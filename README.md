@@ -1,36 +1,70 @@
-Business Intelligence and Predictive Analytics Solution for Incident Management
-This repository contains the code and documentation for the incident management solution developed as part of an engineering internship at Tunisie Telecom. The project aims to transform raw incident data into actionable insights, moving from a reactive to a proactive approach in managing technical issues.
+# 📊 Business Intelligence & Predictive Analytics Solution for Incident Management
 
-🎯 Project Overview
-In the fast-paced world of telecommunications, managing service incidents is critical. This project addresses the need for a data-driven framework to analyze a massive volume of incident data. The developed solution includes a Business Intelligence (BI) system for performance monitoring and a predictive analytics component to anticipate and better manage future incidents.
+> 🚀 *An engineering internship project at **Tunisie Telecom**, designed to transform raw incident data into actionable insights. The solution combines Business Intelligence (BI), Machine Learning, and interactive dashboards to move from reactive to proactive incident management.*  
 
-💡 Solution Architecture
-The solution is built on a robust, multi-layered architecture:
+---
 
-Data Layer: Incident data is extracted, transformed, and loaded into a centralized data warehouse.
+## 📖 Table of Contents
+- [🎯 Project Overview](#-project-overview)
+- [💡 Solution Architecture](#-solution-architecture)
+- [✨ Key Features](#-key-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [📂 Project Structure](#-project-structure)
+- [⚙️ Installation and Execution Steps](#️-installation-and-execution-steps)
+- [📸 Screenshots](#-screenshots)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
+- [👨‍💻 Author](#-author)
 
-Analytics Layer: A machine learning model is trained to predict incident resolution times.
+---
 
-Visualization Layer: Interactive dashboards provide visual insights into incident trends and performance.
+## 🎯 Project Overview
+In the fast-paced world of telecommunications, managing service incidents is critical.  
+This project addresses the challenge of analyzing a **massive volume of incident data** and provides:  
+- A **BI system** for performance monitoring.  
+- A **predictive analytics component** to anticipate and manage future incidents.  
+- An **integrated web application** for centralized access.  
 
-Application Layer: A web application integrates all components into a user-friendly interface.
+---
 
-✨ Key Features
-Data Integration: Automates the extraction and preparation of incident data from various sources.
+## 💡 Solution Architecture
+The solution is based on a **multi-layered architecture**:  
 
-Performance Dashboards: Provides visual dashboards to track key performance indicators (KPIs) and monitor trends.
+1. **Data Layer** – Extract, Transform, Load (ETL) process loads incident data into a centralized **PostgreSQL Data Warehouse**.  
+2. **Analytics Layer** – Machine Learning models predict incident resolution times and detect trends.  
+3. **Visualization Layer** – Interactive dashboards (Power BI) provide visual insights into incident trends & KPIs.  
+4. **Application Layer** – A **Flask + Angular web application** integrates all components into a user-friendly interface.  
 
-Predictive Analytics: A machine learning model predicts incident resolution times to enable proactive resource allocation.
+---
 
-Web Application: A centralized platform for accessing all dashboards and predictive tools.
+## ✨ Key Features
+- 📥 **Data Integration** – Automated extraction and preparation of incident data (Talend).  
+- 📊 **Performance Dashboards** – Track KPIs, monitor resolution times, and visualize incident trends (Power BI).  
+- 🔮 **Predictive Analytics** – ML models forecast incident resolution times to support proactive decisions.  
+- 🌐 **Web Application** – Centralized interface combining BI dashboards and predictive tools.  
 
-🛠️ Technologies Used
-Data Integration: Power BI, Talend
+---
 
-Database: PostgreSQL
+## 🛠 Tech Stack
 
-Frontend: Angular
+**Data Integration:** Power BI, Talend  
+**Database:** PostgreSQL  
+**Backend:** Flask (Python)  
+**Frontend:** Angular  
+**Machine Learning:** Scikit-learn, Pandas, NumPy, Jupyter  
 
-Backend: Flask (Python)
+---
 
-Machine Learning: Scikit-learn, Pandas
+## 📂 Project Structure
+```bash
+Incident-Management-BI-Analytics/
+│
+├── ETL/                 # Talend jobs and data processing workflows
+├── data/                # Raw and cleaned datasets
+├── models/              # Trained ML models (Pickle files)
+├── notebooks/           # Jupyter notebooks for ML training and EDA
+├── PowerBI/             # Power BI dashboards (.pbix)
+├── frontend/            # Angular web app
+├── backend/             # Flask API (Python)
+├── requirements.txt     # Python dependencies
+└── README.md            # Project documentation
